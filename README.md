@@ -1,27 +1,67 @@
-# WorkflowDesigner
+# Workflow Designer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+A modern Angular-based workflow builder designed to model complex process flows with drag-and-drop node composition, conditional branching, LLM and API integrations, and JSON import/export.
 
-## Development server
+## 🚀 Project Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This application demonstrates a polished, production-ready workflow design experience built with Angular 14 and Angular Material.
 
-## Code scaffolding
+Key capabilities:
+- Drag and drop workflow nodes onto a canvas
+- Configure node metadata for LLM prompts, API calls, and conditions
+- Create directional connections between nodes
+- Edit node properties in a live panel
+- Export and import graph state as structured JSON
+- Reactive state management with RxJS and Angular services
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ✨ Features
 
-## Build
+- **Node palette** with reusable building blocks: `Start`, `End`, `LLM`, `API`, and `Conditional`
+- **Canvas flow editor** with draggable nodes and connection creation
+- **Properties panel** for editing node details and serializing workflow intent
+- **JSON workflow export/import** for persistence, versioning, and integration
+- **Clean Angular architecture** using services, observables, and reactive forms
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🧩 Technical Highlights
 
-## Running unit tests
+- Built with **Angular 14**
+- Uses **Angular Material** for accessible UI components
+- Uses **Angular CDK DragDrop** for interactive canvas behavior
+- Uses **Reactive Forms** for real-time node metadata editing
+- Implements a **shared `GraphService`** to keep canvas, palette, and properties in sync
+- Supports **workflow serialization** with a strongly typed graph model
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 📁 What’s inside
 
-## Running end-to-end tests
+- `src/app/components/node-palette/` — node selection and drag source
+- `src/app/components/canvas/` — interactive canvas, node layout, and edge rendering
+- `src/app/components/node-properties/` — dynamic form-driven node configuration
+- `src/app/services/graph.service.ts` — centralized graph state, node lifecycle, and edge management
+- `src/app/models/graph.model.ts` — typed workflow graph and node metadata definitions
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🛠️ Run locally
 
-## Further help
+```bash
+npm install
+npm start
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Then open `http://localhost:4200/` in your browser.
+
+## ✅ Why this repo stands out
+
+- Demonstrates end-to-end UI/UX for a workflow design product
+- Shows practical use of **Angular Material** and **RxJS observable patterns**
+- Highlights ability to model workflows with **LLM, API, and conditional nodes**
+- Positioned for hiring managers looking for frontend developers with strong application architecture skills
+
+## 💡 Potential next steps
+
+- Add **persistent storage** via local storage or backend API
+- Support **undo/redo** and **multi-selection editing**
+- Add **visual edge labels**, **connection validation**, and **node grouping**
+- Add **unit/e2e tests** to validate workflow behavior
+
+## 📌 Notes
+
+This repository is a great example of an interactive UX-focused application built with Angular and modern frontend best practices.
