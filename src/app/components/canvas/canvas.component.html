@@ -1,0 +1,41 @@
+<div class="canvas-shell">
+  <div class="canvas-drop-area" (dragover)="allowDrop($event)" (drop)="onDrop($event)">
+    <svg class="canvas-edges" preserveAspectRatio="none">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#3f51b5" />
+        </marker>
+      </defs>
+      <line *ngFor="let edge of edges"
+            [attr.x1]="edgeCoords(edge).x1"
+            [attr.y1]="edgeCoords(edge).y1"
+            [attr.x2]="edgeCoords(edge).x2"
+            [attr.y2]="edgeCoords(edge).y2"
+            stroke="#3f51b5"
+            stroke-width="3"
+            marker-end="url(#arrowhead)"></line>
+    </svg>
+
+    <div *ngFor="let node of nodes"
+         class="canvas-node"
+         [class.selected]="selectedNodeId === node.id"
+         [class.connecting]="connectingSource === node.id"
+         [class.dragging]="draggingNodeId === node.id"
+         cdkDrag
+         [style.left.px]="node.x"
+         [style.top.px]="node.y"
+         (click)="selectNode(node)"
+         (cdkDragStarted)="onDragStart($event, node)"
+         (cdkDragEnded)="onDragEnd($event, node)">
+      <div class="node-header" cdkDragHandle>{{ node.label }}</div>
+      <div class="node-type">{{ node.type | titlecase }}</div>
+      <button mat-mini-fab color="accent" class="connect-button" (click)="toggleConnection(node, $event)">
+        <mat-icon>share</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="canvas-hint">
+    Drag nodes from the palette, move them freely, and click a node to select it. Use the connect button to build directed edges.
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<mat-card class="properties-card" *ngIf="selectedNode; else emptyState">
+  <mat-card-title>Node metadata</mat-card-title>
+  <mat-card-subtitle>{{ selectedNode.type | titlecase }} node</mat-card-subtitle>
+
+  <form [formGroup]="nodeForm">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="label" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="2"></textarea>
+    </mat-form-field>
+
+    <div *ngIf="selectedNode?.type === 'llm'">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>LLM Prompt</mat-label>
+        <textarea matInput formControlName="llmPrompt" rows="4"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="selectedNode?.type === 'api'">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>API URL</mat-label>
+        <input matInput formControlName="apiUrl" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>HTTP Method</mat-label>
+        <mat-select formControlName="apiMethod">
+          <mat-option value="GET">GET</mat-option>
+          <mat-option value="POST">POST</mat-option>
+          <mat-option value="PUT">PUT</mat-option>
+          <mat-option value="PATCH">PATCH</mat-option>
+          <mat-option value="DELETE">DELETE</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Headers</mat-label>
+        <textarea matInput formControlName="apiHeaders" rows="3"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Body</mat-label>
+        <textarea matInput formControlName="apiBody" rows="4"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="selectedNode?.type === 'conditional'">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Condition expression</mat-label>
+        <textarea matInput formControlName="conditionExpression" rows="3"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div class="properties-actions">
+    <button mat-stroked-button color="warn" (click)="deleteNode()">Delete node</button>
+  </div>
+</mat-card>
+
+<ng-template #emptyState>
+  <mat-card class="properties-card empty-state">
+    <mat-card-title>No node selected</mat-card-title>
+    <mat-card-content>Select a node in the canvas to edit its metadata.</mat-card-content>
+  </mat-card>
+</ng-template>

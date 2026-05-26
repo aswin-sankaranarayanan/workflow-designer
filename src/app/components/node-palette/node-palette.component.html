@@ -1,0 +1,13 @@
+<mat-card class="palette-card">
+  <mat-card-title>Nodes</mat-card-title>
+  <mat-card-subtitle>Drag nodes into the canvas or click Add</mat-card-subtitle>
+
+  <mat-list>
+    <mat-list-item *ngFor="let nodeType of nodeTypes" draggable="true" (dragstart)="onDragStart($event, nodeType.type)">
+      <mat-icon matListIcon>{{ nodeType.icon }}</mat-icon>
+      <div matLine>{{ nodeType.title }}</div>
+      <div matLine class="mat-subheading-2">{{ nodeType.subtitle }}</div>
+      <button mat-mini-fab color="primary" (click)="addNode(nodeType.type)">+</button>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

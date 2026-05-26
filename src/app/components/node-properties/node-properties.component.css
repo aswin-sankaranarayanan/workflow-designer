@@ -1,0 +1,21 @@
+.properties-card {
+  width: 100%;
+  max-width: 360px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.properties-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.empty-state {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

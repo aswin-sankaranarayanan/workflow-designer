@@ -1,0 +1,17 @@
+.palette-card {
+  width: 100%;
+  max-width: 300px;
+}
+
+mat-list-item {
+  align-items: center;
+}
+
+mat-list-item button {
+  margin-left: auto;
+}
+
+mat-list-item .mat-subheading-2 {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.6);
+}
